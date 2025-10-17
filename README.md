@@ -34,6 +34,8 @@
 #### 中文部分（人民日报）
 编写了程序compute_rmrb.py，通过执行以下命令，可以看到人民日报中，中文字符的统计结果。
 
+**compute_rmrb.py 里统计字符的入口是 iter_cjk_chars，它仅在字符的 Unicode 码点落在 0x4E00 到 0x9FFF（CJK Unified Ideographs 区间）时才 yield，所以数字、英文字母和其他非汉字符号都会被直接过滤掉，不会进入计数或熵计算。**
+
 ```bash
 python compute_entropy.py data\rmrb_snapshot_2MB.txt --top 10
 ```
