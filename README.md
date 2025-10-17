@@ -192,7 +192,24 @@ rank char    count    prob      information(bits)  contribution
 ```
 
 ```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_cd.py data\cd_snapshot_10MB.txt --top 10
+Corpus: data\cd_snapshot_10MB.txt
+Total letters: 8532582
+Unique letters: 26
+Shannon entropy: 4.162832 bits
 
+Top letters:
+rank char count prob information(bits) contribution
+   1  e    1000965  0.117311        3.091591         0.362677
+   2  t     746638  0.087504        3.514502         0.307534
+   3  i     723501  0.084793        3.559915         0.301855
+   4  a     721101  0.084511        3.564709         0.301259
+   5  n     704407  0.082555        3.598501         0.297074
+   6  o     619315  0.072582        3.784237         0.274669
+   7  s     562327  0.065903        3.923501         0.258572
+   8  r     537203  0.062959        3.989443         0.251171
+   9  h     362041  0.042430        4.558757         0.193430
+  10  l     341302  0.040000        4.643862         0.185754
 ```
 
 
