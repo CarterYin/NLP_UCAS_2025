@@ -1,0 +1,8 @@
+[package]
+name = "prml-review"
+version = "0.1.0"
+entrypoint = "main.typ"
+
+[tool.typst.workspace]
+root = "."
+exclude = []
