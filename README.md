@@ -17,7 +17,7 @@
 
 对人民日报的爬虫的主要功能如下(rm.py)：
 
-- 对2024年12月后的内容进行爬取（原仓库已经实现）
+- 对2024年12月后的内容进行爬取（原仓库已经实现），在本次计算比较中，我采用了爬取20241201-20250301的内容，实际上发现爬取到20250106已经足够。
 - 在命令行进行日期输入后自动化按照时间顺序爬取内容（原仓库已经实现）
 - 实时监控爬取内容的大小和日期进度（新增加监控内容大小）
 - 在2M，5M，10M的时候进行快照保存（新增加快照保存）
@@ -32,7 +32,7 @@
 ### 算法部分（概率和熵的计算和比较）
 
 #### 中文部分（人民日报）
-编写了程序compute_entropy.py，通过执行以下命令，可以看到人民日报的统计结果。
+编写了程序compute_rmrb.py，通过执行以下命令，可以看到人民日报中，中文字符的统计结果。
 
 ```bash
 python compute_entropy.py data\rmrb_snapshot_2MB.txt --top 10
@@ -65,5 +65,50 @@ rank char     count    prob      information(bits)  contribution
    9  和       3966  0.006581        7.247564         0.047693
   10  业       3916  0.006498        7.265868         0.047211
 ```
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_entropy.py data\rmrb_snapshot_5MB.txt --top 10
+Corpus: data\rmrb_snapshot_5MB.txt
+Total Chinese characters: 1503549
+Unique Chinese characters: 4307
+Shannon entropy: 9.639168 bits
+
+Top characters:
+rank char count prob information(bits) contribution
+   1  的      33439  0.022240        5.490696         0.122113
+   2  国      16802  0.011175        6.483595         0.072453
+   3  中      15766  0.010486        6.575411         0.068949
+   4  一      13521  0.008993        6.797026         0.061124
+   5  发      11182  0.007437        7.071050         0.052588
+   6  人      10897  0.007248        7.108297         0.051518
+   7  业       9574  0.006368        7.295034         0.046452
+   8  和       9550  0.006352        7.298655         0.046358
+   9  在       9487  0.006310        7.308204         0.046113
+  10  年       9333  0.006207        7.331815         0.045511
+```
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_entropy.py data\rmrb_snapshot_10MB.txt --top 10
+Corpus: data\rmrb_snapshot_10MB.txt
+Total Chinese characters: 3006557
+Unique Chinese characters: 4735
+Shannon entropy: 9.631801 bits
+
+Top characters:
+rank char count prob information(bits) contribution
+   1  的      66909  0.022254        5.489768         0.122171
+   2  国      32913  0.010947        6.513311         0.071302
+   3  中      30465  0.010133        6.624816         0.067128
+   4  一      26290  0.008744        6.837454         0.059788
+   5  人      22374  0.007442        7.070145         0.052614
+   6  发      21741  0.007231        7.111550         0.051425
+   7  业      20417  0.006791        7.202198         0.048909
+   8  和      19202  0.006387        7.290712         0.046564
+   9  在      18814  0.006258        7.320162         0.045807
+  10  年      18745  0.006235        7.325463         0.045672
+```
+
+
+
 
 #### 英文部分（Global Times）
