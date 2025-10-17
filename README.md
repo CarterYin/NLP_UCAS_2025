@@ -96,7 +96,7 @@ Unique Chinese characters: 4307
 Shannon entropy: 9.639168 bits
 
 Top characters:
-rank char count prob information(bits) contribution
+rank char     count    prob      information(bits)  contribution
    1  的      33439  0.022240        5.490696         0.122113
    2  国      16802  0.011175        6.483595         0.072453
    3  中      15766  0.010486        6.575411         0.068949
@@ -117,7 +117,7 @@ Unique Chinese characters: 4735
 Shannon entropy: 9.631801 bits
 
 Top characters:
-rank char count prob information(bits) contribution
+rank char     count    prob      information(bits)  contribution
    1  的      66909  0.022254        5.489768         0.122171
    2  国      32913  0.010947        6.513311         0.071302
    3  中      30465  0.010133        6.624816         0.067128
@@ -136,6 +136,63 @@ rank char count prob information(bits) contribution
 #### 英文部分（China Daily）
 编写了程序compute_cd.py，通过执行以下命令，可以看到China Daily中，英文字符的统计结果。（爬取的是从20241201-20250401的文章）
 ```bash
+python compute_cd.py data\cd_snapshot_2MB.txt --top 10
+```
+```bash
+python compute_cd.py data\cd_snapshot_5MB.txt --top 10
+```
+```bash
+python compute_cd.py data\cd_snapshot_10MB.txt --top 10
+```
+
+
+
+统计结果示例如下：
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_cd.py data\cd_snapshot_2MB.txt --top 10
+Corpus: data\cd_snapshot_2MB.txt
+Total letters: 1706620
+Unique letters: 26
+Shannon entropy: 4.162821 bits
+
+Top letters:
+rank char    count    prob       information(bits) contribution
+   1  e     200370  0.117408        3.090403         0.362837
+   2  t     149595  0.087656        3.512008         0.307848
+   3  i     144565  0.084708        3.561352         0.301676
+   4  a     143569  0.084125        3.571326         0.300437
+   5  n     141317  0.082805        3.594135         0.297613
+   6  o     125017  0.073254        3.770946         0.276237
+   7  s     111119  0.065111        3.940964         0.256598
+   8  r     107151  0.062786        3.993425         0.250729
+   9  h      73296  0.042948        4.541264         0.195038
+  10  l      68587  0.040189        4.637063         0.186358
+```
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_cd.py data\cd_snapshot_5MB.txt --top 10
+Corpus: data\cd_snapshot_5MB.txt
+Total letters: 4264958
+Unique letters: 26
+Shannon entropy: 4.162419 bits
+
+Top letters:
+rank char    count    prob      information(bits)  contribution
+   1  e     500480  0.117347        3.091147         0.362737
+   2  t     373307  0.087529        3.514097         0.307585
+   3  i     361563  0.084775        3.560213         0.301818
+   4  a     360869  0.084613        3.562984         0.301473
+   5  n     352718  0.082701        3.595944         0.297390
+   6  o     311461  0.073028        3.775408         0.275710
+   7  s     279295  0.065486        3.932670         0.257535
+   8  r     268068  0.062854        3.991861         0.250903
+   9  h     182403  0.042768        4.547330         0.194479
+  10  l     170040  0.039869        4.648585         0.185335
+```
+
+```bash
 
 ```
+
 
