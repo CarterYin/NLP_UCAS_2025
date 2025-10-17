@@ -10,6 +10,17 @@
 - 当改变样本规模时重新计算字母/汉字的概率和熵, 并对比计算结果；
 - 完成一份技术报告，在报告中写明利用什么爬虫工具从哪些网站上收集的样本，如何进行的样本清洗，清洗后样本的规模，在不同样本规模下计算的结果等。实验分析有较大的伸缩空间。
 
+### 环境
+创建虚拟环境
+```bash
+conda create -n nlp python=3.13 -y
+```
+下载必要的包
+```bash
+pip install requests beautifulsoup4
+```
+
+
 ### 爬虫部分
 **致谢：感谢https://github.com/caspiankexin/people-daily-crawler-date 仓库的爬虫，本仓库爬取人民日报部分内容皆为该仓库修改得来**
 

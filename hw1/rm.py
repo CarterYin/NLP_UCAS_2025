@@ -1,7 +1,7 @@
 '''
 代码名称：爬取人民日报数据为txt文件
 编写日期：2025年1月1日
-作者：github（caspiankexin）
+作者：github（caspiankexin）（CarterYin）
 版本：第3版
 可爬取的时间范围：2024年12月起
 注意：此代码仅供交流学习，不得作为其他用途。
