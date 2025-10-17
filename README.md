@@ -28,3 +28,39 @@
 - 对Global Times主页的文章超链接进行访问，最大读取两层超链接（启发来自于Yu Shi）
 - 忽略大量的标题类文本，中文文本，无关新闻的文本
 - 在2M，5M，10M的时候进行快照保存
+
+### 算法部分（概率和熵的计算和比较）
+
+编写了程序compute_entropy.py，通过执行以下命令，可以看到统计结果。
+
+```bash
+python compute_entropy.py data\rmrb_snapshot_2MB.txt --top 10
+```
+```bash
+python compute_entropy.py data\rmrb_snapshot_5MB.txt --top 10
+```
+```bash
+python compute_entropy.py data\rmrb_snapshot_10MB.txt --top 10
+```
+统计结果示例如下：
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_entropy.py data\rmrb_snapshot_2MB.txt --top 10
+Corpus: data\rmrb_snapshot_2MB.txt
+Total Chinese characters: 602680
+Unique Chinese characters: 3571
+Shannon entropy: 9.533166 bits
+
+Top characters:
+rank char     count    prob      information(bits)  contribution
+   1  的      12996  0.021564        5.535253         0.119360
+   2  国       7551  0.012529        6.318581         0.079166
+   3  中       6743  0.011188        6.481858         0.072521
+   4  一       5608  0.009305        6.747762         0.062789
+   5  发       4736  0.007858        6.991579         0.054941
+   6  新       4110  0.006820        7.196110         0.049074
+   7  化       4006  0.006647        7.233086         0.048078
+   8  人       3977  0.006599        7.243568         0.047799
+   9  和       3966  0.006581        7.247564         0.047693
+  10  业       3916  0.006498        7.265868         0.047211
+```
