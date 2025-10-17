@@ -1,4 +1,12 @@
-# 这是中国科学院大学本科部2025NLP的作业
+[//]: # (<br />)
+<p align="center">
+  <h1 align="center">中国科学院大学本科部 2025 NLP 作业</h1>
+  <p align="center">
+    <img src="https://img.shields.io/badge/NLP-Homework-blue?style=flat&logo=github" alt="NLP Status">
+    <img src="https://img.shields.io/badge/Python-NLP%20%7C%20Crawler-green" alt="Python">
+  </p>
+</p>
+
 ## Homework1（对应文件夹hw1）
 ### 题目
 1.分别收集尽量多的英语和汉语文本，编写程序计算这些文本中英语字母和汉字的熵，对比本章课件第18页上表中给出的结果。然后逐步扩大文本规模，如每次增加固定的数量，如2M/5M等，重新计算文本规模扩大之的熵，分析多次增加之后熵的变化情况。
