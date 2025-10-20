@@ -287,12 +287,83 @@ rank word                   count    prob      information(bits)  contribution
 
 在英文单词统计中，将所有撇号形式的所有格结尾（如 `China's`、`people’s`）视为整词处理后，孤立的 `s` 不再计入词频，因此 top-10 高频词更贴近常见功能词分布，整体熵值也随语料规模上升略有增加（约 10.29→10.43 bits），表明词级别的多样性与语料扩展保持正相关。
 
+=== 齐夫定律验证
+为了检验齐夫定律，我分别对2MB、5MB、10MB 英文语料中排名前 200 的词频做了 `log10(rank)` 与 `log10(freq)` 的线性回归，得到的斜率接近理想值 −1，说明词频随排名呈现出近似的幂律衰减。
+
+回归之外，直接检查头部词频也能看到齐夫定律的特征：以10MB样本为例，`rank × freq` 对于前十个词大致稳定在 0.07~0.12 区间；不同规模语料中 `the`、`and`、`of` 等功能词的概率几乎保持在 0.063、0.035、0.030 左右，随着语料容量扩大，绝对频次按比例增长而相对频率基本不变。这些现象共同表明，英文单词分布在大规模新闻语料上符合齐夫定律，且统计特性在几兆字节的样本量下已经充分收敛。
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python verify_zipf.py data\cd_snapshot_2MB.txt --top 200 --show 10 
+Corpus: data\cd_snapshot_2MB.txt
+Total words: 321481
+Unique words: 17145
+Top ranks used: 1-200
+Linear fit (log10 rank vs log10 freq): slope=-0.934, intercept=-1.137, mse=0.00066
+
+rank    freq    rank*freq  log10(rank) log10(freq)
+   1  0.063736  0.063736    0.000000   -1.195613
+   2  0.035492  0.070984    0.301030   -1.449870
+   3  0.030437  0.091312    0.477121   -1.516594
+   4  0.027930  0.111720    0.602060   -1.553927
+   5  0.023961  0.119805    0.698970   -1.620495
+   6  0.019438  0.116629    0.778151   -1.711345
+   7  0.010635  0.074446    0.845098   -1.973256
+   8  0.010464  0.083713    0.903090   -1.980299
+   9  0.008570  0.077127    0.954243   -2.067034
+  10  0.008032  0.080316    1.000000   -2.095199
+```
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python verify_zipf.py data\cd_snapshot_5MB.txt --top 200 --show 10
+Corpus: data\cd_snapshot_5MB.txt
+Total words: 803795
+Unique words: 26020
+Top ranks used: 1-200
+Linear fit (log10 rank vs log10 freq): slope=-0.935, intercept=-1.142, mse=0.00071
+
+rank    freq    rank*freq  log10(rank) log10(freq)
+   1  0.064663  0.064663    0.000000   -1.189342
+   2  0.035158  0.070316    0.301030   -1.453973
+   3  0.031127  0.093382    0.477121   -1.506858
+   4  0.027461  0.109844    0.602060   -1.561284
+   5  0.024245  0.121225    0.698970   -1.615378
+   6  0.019397  0.116380    0.778151   -1.712271
+   7  0.010289  0.072021    0.845098   -1.987640
+   8  0.009989  0.079911    0.903090   -2.000484
+   9  0.008471  0.076240    0.954243   -2.072062
+  10  0.007889  0.078888    1.000000   -2.102988
+```
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python verify_zipf.py data\cd_snapshot_10MB.txt --top 200 --show 10
+Corpus: data\cd_snapshot_10MB.txt
+Total words: 1606038
+Unique words: 34717
+Top ranks used: 1-200
+Linear fit (log10 rank vs log10 freq): slope=-0.925, intercept=-1.155, mse=0.00082
+
+rank    freq    rank*freq  log10(rank) log10(freq)
+   1  0.063393  0.063393    0.000000   -1.197957
+   2  0.034847  0.069693    0.301030   -1.457839
+   3  0.030034  0.090102    0.477121   -1.522385
+   4  0.027477  0.109908    0.602060   -1.561032
+   5  0.023481  0.117407    0.698970   -1.629276
+   6  0.019689  0.118137    0.778151   -1.705766
+   7  0.010139  0.070970    0.845098   -1.994021
+   8  0.009693  0.077542    0.903090   -2.013551
+   9  0.008479  0.076308    0.954243   -2.071674
+  10  0.008079  0.080789    1.000000   -2.092648
+```
+
+
 
 
 = Chapter 4 Conclusion
 通过本次实验，我构建了从数据采集到统计分析的完整流程：先针对人民日报与 China Daily 制作定向爬虫，结合 `CorpusMonitor` 在关键体积截取快照，再以 `compute_rmrb.py` 与 `compute_cd.py` 以及 `compute_cd2.py` 对语料进行单字符层面和单词层面的概率与熵值计算。整个实践强化了“高质量数据 + 精确统计”这一基本功：爬虫阶段的结构化解析、正文抽取与编码清洗直接决定了后续统计的可信度，而脚本化的熵计算则提供了量化语言冗余度与信息密度的手段。
 
 实验结果显示，中文汉字的熵值稳定在约 9.6 bits，英文字母约 4.16 bits，英文单词约 10.38 bits，两者在 2MB/5MB/10MB 的规模扩展后仍保持高度一致的高频符号分布。这一现象印证了语言统计的“早期收敛”特性：即便语料继续累积，单字符概率的主干结构不会发生突变，新增数据更多是在补充长尾符号并降低采样噪声。另一方面，中文熵值显著高于英文字母，而英文单词熵值则更高，反映出不同语言在符号集大小与使用频率分布上的差异。
+
+本次作业通过对英文单词层面的扩展，进一步验证了齐夫定律在大规模新闻语料中的适用性。无论是线性回归的斜率接近 −1，还是头部词频的 `rank × freq` 稳定性，都表明英文单词分布符合经典的幂律规律。这不仅加深了我对语言统计学基本原理的理解，也为后续更复杂的语言模型构建（如 n 元模型、主题模型）奠定了基础。
 
 本次作业还暴露了一些值得深入的方向。例如，快照机制固然方便观察总体趋势，但若要比较不同板块（如财经、文化）或不同时间段的用字差异，还需在爬虫阶段记录更细粒度的元数据，并在统计脚本中支持分组或增量分析。此外，单字符熵只能捕捉零阶语言特征，要理解句法与语义层面，必须引入二元、三元乃至子词/词级模型，配合停用词处理和语言模型评估，才能揭示更深层的语言组织规律。
 
@@ -1068,4 +1139,106 @@ def main() -> None:
 
 if __name__ == "__main__":
 	main()
+```
+
+== verify_zipf.py
+```python
+"""Command-line tool to verify Zipf's law on English word frequencies."""
+
+from __future__ import annotations
+
+import argparse
+import math
+from pathlib import Path
+from typing import Iterable
+
+from compute_cd2 import analyze_words
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Fit a Zipf regression on English word frequencies.",
+    )
+    parser.add_argument(
+        "corpus",
+        type=Path,
+        help="Path to the UTF-8 encoded corpus file to analyze.",
+    )
+    parser.add_argument(
+        "--top",
+        type=int,
+        default=200,
+        help="Number of top-ranked words to include in the regression (default: 200).",
+    )
+    parser.add_argument(
+        "--case-sensitive",
+        action="store_true",
+        help="Treat uppercase and lowercase words as distinct tokens.",
+    )
+    parser.add_argument(
+        "--show",
+        type=int,
+        default=10,
+        help="Show the first K rows of the rank-frequency summary (default: 10).",
+    )
+    return parser.parse_args()
+
+
+def load_frequencies(path: Path, case_sensitive: bool, top_n: int) -> tuple[list[tuple[int, float]], int, int]:
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    counts, total, _ = analyze_words(text, case_sensitive)
+    pairs = [
+        (rank + 1, count / total)
+        for rank, (_, count) in enumerate(counts.most_common(top_n))
+    ]
+    return pairs, total, len(counts)
+
+
+def linear_regression(pairs: Iterable[tuple[int, float]]) -> tuple[float, float, float]:
+    log_ranks = [math.log10(rank) for rank, _ in pairs]
+    log_freqs = [math.log10(freq) for _, freq in pairs]
+    n = len(log_ranks)
+    mean_x = sum(log_ranks) / n
+    mean_y = sum(log_freqs) / n
+    numerator = sum((x - mean_x) * (y - mean_y) for x, y in zip(log_ranks, log_freqs))
+    denominator = sum((x - mean_x) ** 2 for x in log_ranks)
+    slope = numerator / denominator
+    intercept = mean_y - slope * mean_x
+    mse = sum(
+        (y - (slope * x + intercept)) ** 2
+        for x, y in zip(log_ranks, log_freqs)
+    ) / n
+    return slope, intercept, mse
+
+
+def main() -> None:
+    args = parse_args()
+    pairs, total, unique = load_frequencies(args.corpus, args.case_sensitive, args.top)
+    if not pairs:
+        raise ValueError("no words were found in the corpus")
+
+    slope, intercept, mse = linear_regression(pairs)
+
+    print(f"Corpus: {args.corpus}")
+    print(f"Total words: {total}")
+    print(f"Unique words: {unique}")
+    print(f"Top ranks used: 1-{len(pairs)}")
+    print(
+        "Linear fit (log10 rank vs log10 freq): "
+        f"slope={slope:.3f}, intercept={intercept:.3f}, mse={mse:.5f}"
+    )
+    print()
+    print("rank freq rank*freq log10(rank) log10(freq)")
+    sample_pairs = pairs[: max(args.show, 0)]
+    for rank, freq in sample_pairs:
+        log_rank = math.log10(rank)
+        log_freq = math.log10(freq)
+        print(
+            f"{rank:>4}  {freq:>0.6f}  {rank * freq:>0.6f}  "
+            f"{log_rank:>10.6f}  {log_freq:>10.6f}"
+        )
+
+
+if __name__ == "__main__":
+    main()
 ```
