@@ -292,7 +292,7 @@ Unique words: 17145
 Shannon entropy: 10.287671 bits
 
 Top words:
-rank word                count prob information(bits) contribution
+rank word                   count    prob       information(bits) contribution
    1  the                   20490  0.063736        3.971742         0.253144
    2  and                   11410  0.035492        4.816363         0.170942
    3  of                     9785  0.030437        5.038018         0.153343
@@ -313,7 +313,7 @@ Unique words: 26020
 Shannon entropy: 10.380079 bits
 
 Top words:
-rank word                count prob information(bits) contribution
+rank word                   count    prob      information(bits)  contribution
    1  the                   51976  0.064663        3.950910         0.255479
    2  and                   28260  0.035158        4.829994         0.169814
    3  of                    25020  0.031127        5.005674         0.155813
@@ -334,7 +334,7 @@ Unique words: 34717
 Shannon entropy: 10.425898 bits
 
 Top words:
-rank word                count prob information(bits) contribution
+rank word                   count    prob      information(bits)  contribution
    1  the                  101812  0.063393        3.979527         0.252275
    2  and                   55965  0.034847        4.842837         0.168757
    3  of                    48236  0.030034        5.057252         0.151890

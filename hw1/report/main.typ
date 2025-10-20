@@ -138,7 +138,7 @@ rank char     count    prob      information(bits)  contribution
 
 `compute_rmrb.py` 输出的熵值分别为 9.639 bits 与 9.632 bits，去重字符数增至 4307 与 4735，但高频字仍围绕“的、国、中、一、人、发”等词汇，所占概率与贡献度变化不大。这说明在人民日报的报道语域中，单字符层面的分布在几兆规模下迅速收敛，捕捉到的多为功能词与核心名词。
 
-== 英文字符的概率与熵值计算
+== 英文字母的概率与熵值计算
 === 纵观所有结果
 ```bash
 (nlp) PS E:\homework\nlp\hw1> python compute_cd.py data\cd_snapshot_2MB.txt --top 10
@@ -203,6 +203,9 @@ rank char count prob information(bits) contribution
   10  l     341302  0.040000        4.643862         0.185754
 ```
 
+
+
+
 === 结果分析
 
 对于英文语料，`compute_cd.py` 在不同快照下统计到的 26 个字母概率基本一致，熵值始终落在 4.162~4.163 bits 区间。由于脚本默认将大小写折叠为小写字符，分布主要反映了标准英文的基础字母频率，高频顺序呈现出 `e > t > i/a > n > o` 的经典“ETAOIN”形态。
@@ -213,10 +216,83 @@ rank char count prob information(bits) contribution
 
 综上，英语语料的单字符熵稳定性与经典语言学结论高度一致，也验证了脚本的处理逻辑。若想进一步探究版面、主题或时间段的差异，需要引入双字母或更高阶的 n 元模型，或结合词级统计与停用词过滤，才能捕捉到语义层面对分布的微妙变化。
 
-= Chapter 4 Conclusion
-通过本次实验，我构建了从数据采集到统计分析的完整流程：先针对人民日报与 China Daily 制作定向爬虫，结合 `CorpusMonitor` 在关键体积截取快照，再以 `compute_rmrb.py` 与 `compute_cd.py` 对语料进行单字符层面的概率与熵值计算。整个实践强化了“高质量数据 + 精确统计”这一基本功：爬虫阶段的结构化解析、正文抽取与编码清洗直接决定了后续统计的可信度，而脚本化的熵计算则提供了量化语言冗余度与信息密度的手段。
+== 英文单词的概率与熵值计算
+在英文单词层面，我对 `compute_cd.py` 进行了调整，命名新的脚本为 `compute_cd2.py`，新增了对单词的提取与统计功能。具体做法是利用正则表达式匹配 ASCII 字母序列作为单词，并在统计时将所有撇号形式的所有格结尾（如 `China's`、`people’s`）视为整词处理，避免孤立的 `s` 影响频率分布。
 
-实验结果显示，中文汉字的熵值稳定在约 9.6 bits，英文字母约 4.16 bits，两者在 2MB/5MB/10MB 的规模扩展后仍保持高度一致的高频符号分布。这一现象印证了语言统计的“早期收敛”特性：即便语料继续累积，单字符概率的主干结构不会发生突变，新增数据更多是在补充长尾符号并降低采样噪声。另一方面，中文熵值显著高于英文，既反映了汉字数量的巨大与语素表达的丰富，也提醒我们在中文 NLP 中需要面对更大的符号空间与稀疏挑战。
+=== 纵观所有结果
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_cd2.py data\cd_snapshot_2MB.txt --top 10 
+Corpus: data\cd_snapshot_2MB.txt
+Total words: 321481
+Unique words: 17145
+Shannon entropy: 10.287671 bits
+
+Top words:
+rank word                   count    prob       information(bits) contribution
+   1  the                   20490  0.063736        3.971742         0.253144
+   2  and                   11410  0.035492        4.816363         0.170942
+   3  of                     9785  0.030437        5.038018         0.153343
+   4  to                     8979  0.027930        5.162035         0.144176
+   5  in                     7703  0.023961        5.383169         0.128986
+   6  a                      6249  0.019438        5.684964         0.110505
+   7  china                  3419  0.010635        6.555015         0.069714
+   8  for                    3364  0.010464        6.578412         0.068837
+   9  is                     2755  0.008570        6.866537         0.058844
+  10  that                   2582  0.008032        6.960101         0.055901
+```
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_cd2.py data\cd_snapshot_5MB.txt --top 10 
+Corpus: data\cd_snapshot_5MB.txt
+Total words: 803795
+Unique words: 26020
+Shannon entropy: 10.380079 bits
+
+Top words:
+rank word                   count    prob      information(bits)  contribution
+   1  the                   51976  0.064663        3.950910         0.255479
+   2  and                   28260  0.035158        4.829994         0.169814
+   3  of                    25020  0.031127        5.005674         0.155813
+   4  to                    22073  0.027461        5.186473         0.142426
+   5  in                    19488  0.024245        5.366170         0.130103
+   6  a                     15591  0.019397        5.688042         0.110329
+   7  for                    8270  0.010289        6.602796         0.067934
+   8  china                  8029  0.009989        6.645463         0.066381
+   9  is                     6809  0.008471        6.883241         0.058308
+  10  that                   6341  0.007889        6.985973         0.055111
+```
+
+```bash
+(nlp) PS E:\homework\nlp\hw1> python compute_cd2.py data\cd_snapshot_10MB.txt --top 10
+Corpus: data\cd_snapshot_10MB.txt
+Total words: 1606038
+Unique words: 34717
+Shannon entropy: 10.425898 bits
+
+Top words:
+rank word                   count    prob      information(bits)  contribution
+   1  the                  101812  0.063393        3.979527         0.252275
+   2  and                   55965  0.034847        4.842837         0.168757
+   3  of                    48236  0.030034        5.057252         0.151890
+   4  to                    44129  0.027477        5.185635         0.142485
+   5  in                    37712  0.023481        5.412339         0.127089
+   6  a                     31622  0.019689        5.666434         0.111569
+   7  for                   16283  0.010139        6.623996         0.067158
+   8  china                 15567  0.009693        6.688871         0.064834
+   9  is                    13617  0.008479        6.881953         0.058350
+  10  on                    12975  0.008079        6.951628         0.056161
+```
+
+=== 结果分析
+
+在英文单词统计中，将所有撇号形式的所有格结尾（如 `China's`、`people’s`）视为整词处理后，孤立的 `s` 不再计入词频，因此 top-10 高频词更贴近常见功能词分布，整体熵值也随语料规模上升略有增加（约 10.29→10.43 bits），表明词级别的多样性与语料扩展保持正相关。
+
+
+
+= Chapter 4 Conclusion
+通过本次实验，我构建了从数据采集到统计分析的完整流程：先针对人民日报与 China Daily 制作定向爬虫，结合 `CorpusMonitor` 在关键体积截取快照，再以 `compute_rmrb.py` 与 `compute_cd.py` 以及 `compute_cd2.py` 对语料进行单字符层面和单词层面的概率与熵值计算。整个实践强化了“高质量数据 + 精确统计”这一基本功：爬虫阶段的结构化解析、正文抽取与编码清洗直接决定了后续统计的可信度，而脚本化的熵计算则提供了量化语言冗余度与信息密度的手段。
+
+实验结果显示，中文汉字的熵值稳定在约 9.6 bits，英文字母约 4.16 bits，英文单词约 10.38 bits，两者在 2MB/5MB/10MB 的规模扩展后仍保持高度一致的高频符号分布。这一现象印证了语言统计的“早期收敛”特性：即便语料继续累积，单字符概率的主干结构不会发生突变，新增数据更多是在补充长尾符号并降低采样噪声。另一方面，中文熵值显著高于英文字母，而英文单词熵值则更高，反映出不同语言在符号集大小与使用频率分布上的差异。
 
 本次作业还暴露了一些值得深入的方向。例如，快照机制固然方便观察总体趋势，但若要比较不同板块（如财经、文化）或不同时间段的用字差异，还需在爬虫阶段记录更细粒度的元数据，并在统计脚本中支持分组或增量分析。此外，单字符熵只能捕捉零阶语言特征，要理解句法与语义层面，必须引入二元、三元乃至子词/词级模型，配合停用词处理和语言模型评估，才能揭示更深层的语言组织规律。
 
@@ -897,6 +973,97 @@ def main() -> None:
 	if args.top > 0:
 		print("\nTop letters:")
 		print(format_top_characters(counts, total, args.top))
+
+
+if __name__ == "__main__":
+	main()
+```
+
+== compute_cd2.py
+```python
+"""Compute English word probabilities and entropy for text corpora."""
+
+from __future__ import annotations
+
+import argparse
+import math
+import re
+from collections import Counter
+from pathlib import Path
+from typing import Iterable
+
+WORD_PATTERN = re.compile(r"[A-Za-z]+")
+
+
+def iter_english_words(text: str, case_sensitive: bool) -> Iterable[str]:
+	"""Yield ASCII alphabetic word tokens, normalizing case unless requested."""
+	for match in WORD_PATTERN.finditer(text):
+		word = match.group(0)
+		start = match.start()
+		if start > 0 and text[start - 1] in {"'", "’"} and word.lower() == "s":
+			continue
+		yield word if case_sensitive else word.lower()
+
+
+def analyze_words(text: str, case_sensitive: bool) -> tuple[Counter[str], int, float]:
+	counts = Counter(iter_english_words(text, case_sensitive))
+	total = sum(counts.values())
+	if not total:
+		raise ValueError("input corpus does not contain any ASCII alphabetic words")
+	probabilities = (count / total for count in counts.values())
+	entropy = -sum(p * math.log2(p) for p in probabilities)
+	return counts, total, entropy
+
+
+def format_top_words(counts: Counter[str], total: int, top_k: int) -> str:
+	lines = []
+	header = "rank word                count prob information(bits) contribution"
+	lines.append(header)
+	for rank, (word, count) in enumerate(counts.most_common(top_k), 1):
+		probability = count / total
+		information_bits = -math.log2(probability)
+		contribution = probability * information_bits
+		lines.append(
+			f"{rank:>4}  {word:<18} {count:>8}  {probability:>0.6f}"
+			f"      {information_bits:>10.6f}       {contribution:>10.6f}"
+		)
+	return "\n".join(lines)
+
+
+def main() -> None:
+	parser = argparse.ArgumentParser(
+		description="Compute English word probabilities and Shannon entropy."
+	)
+	parser.add_argument(
+		"corpus",
+		type=Path,
+		help="Path to the UTF-8 encoded corpus file to analyze.",
+	)
+	parser.add_argument(
+		"--top",
+		type=int,
+		default=20,
+		help="Show the top-K most frequent words (default: 20).",
+	)
+	parser.add_argument(
+		"--case-sensitive",
+		action="store_true",
+		help="Treat uppercase and lowercase words as distinct tokens.",
+	)
+	args = parser.parse_args()
+
+	text = args.corpus.read_text(encoding="utf-8", errors="ignore")
+	counts, total, entropy = analyze_words(text, args.case_sensitive)
+	unique = len(counts)
+
+	print(f"Corpus: {args.corpus}")
+	print(f"Total words: {total}")
+	print(f"Unique words: {unique}")
+	print(f"Shannon entropy: {entropy:.6f} bits")
+
+	if args.top > 0:
+		print("\nTop words:")
+		print(format_top_words(counts, total, args.top))
 
 
 if __name__ == "__main__":
