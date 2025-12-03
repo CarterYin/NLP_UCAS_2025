@@ -1,0 +1,122 @@
+=== ZH Results ===
+WORD: 财政
+NEIGHBORS: 文字(0.320), 使馆(0.312), 科委(0.311), 科研(0.305), １４(0.293), 无论是(0.287), 彭(0.287), 战略性(0.279), 汇(0.277), 签订(0.272)
+--------------------
+WORD: 以
+NEIGHBORS: 创建(0.321), 官兵(0.306), 讯(0.301), 变(0.298), 回到(0.296), 公益(0.291), 分为(0.290), 征收(0.286), 消防(0.284), 谭(0.279)
+--------------------
+WORD: 条件
+NEIGHBORS: 风貌(0.340), 需要(0.324), 树(0.323), 公安(0.321), 十四大(0.319), １９９８(0.313), 公款(0.313), 石(0.310), 服装(0.305), 追(0.300)
+--------------------
+WORD: 教师
+NEIGHBORS: 各国(0.349), 货币化(0.332), 灾民(0.312), 消防(0.311), 联欢(0.306), 浮动(0.305), 类(0.305), 奋力(0.289), 阿根廷(0.285), 光荣(0.282)
+--------------------
+WORD: 规模
+NEIGHBORS: 分配(0.328), 副食品(0.323), 新年(0.314), 优势(0.311), 大大(0.309), 永远(0.302), 土耳其(0.301), 历史性(0.297), 城市(0.296), 片(0.294)
+--------------------
+WORD: 意识
+NEIGHBORS: 状况(0.358), 干部(0.333), 喜讯(0.307), 排(0.294), 社会(0.292), 公正(0.286), 扩张(0.276), 没(0.275), 安理会(0.274), 一方面(0.271)
+--------------------
+WORD: 青年
+NEIGHBORS: 入手(0.359), 评选(0.353), 空气(0.350), 男(0.348), 关公(0.332), 想起(0.322), 航空(0.322), 材料(0.315), 有利于(0.313), 石家庄(0.301)
+--------------------
+WORD: 仍
+NEIGHBORS: 年轻人(0.335), 一度(0.319), 政党(0.313), 也(0.308), 平(0.307), 实际上(0.303), 又(0.303), 外国(0.300), 企业(0.297), 基因(0.296)
+--------------------
+WORD: ７日
+NEIGHBORS: 重要性(0.327), ５日(0.320), ２８(0.315), 揭示(0.302), 事业(0.294), 合并(0.290), 批准(0.284), 严寒(0.282), 另一方面(0.281), 交易日(0.281)
+--------------------
+WORD: 才
+NEIGHBORS: 不仅(0.394), 无产阶级(0.376), 只(0.349), 逐渐(0.313), 国情(0.306), 色彩(0.297), 人心(0.293), 潜力(0.287), 曾经(0.281), 常务(0.280)
+--------------------
+WORD: 统一
+NEIGHBORS: 县委(0.396), 顽强(0.331), 历史性(0.316), 停止(0.314), ’(0.304), 钻(0.297), 重建(0.295), 扶贫(0.292), 跳(0.290), 坚强(0.283)
+--------------------
+WORD: 晚
+NEIGHBORS: 至此(0.412), 奉献(0.357), 沈阳(0.342), 主人(0.332), 京(0.330), 范围(0.310), 为了(0.307), 于是(0.307), 大都(0.304), 大学生(0.301)
+--------------------
+WORD: 生产
+NEIGHBORS: 猪(0.372), 健全(0.333), 外商(0.312), 取(0.312), 送给(0.310), 具(0.307), 网(0.305), 医疗队(0.301), 资源(0.289), 比例(0.288)
+--------------------
+WORD: 国防
+NEIGHBORS: 献给(0.347), 红薯(0.341), 震撼(0.330), 助(0.327), 出生(0.319), 吕(0.302), 保证(0.299), 账户(0.296), 减少(0.296), 保障(0.294)
+--------------------
+WORD: 除
+NEIGHBORS: 表演(0.361), 约(0.357), 遏制(0.335), 补充(0.325), 满(0.307), 具有(0.306), 上市(0.306), 女性(0.301), ２６(0.299), 久(0.295)
+--------------------
+WORD: ●
+NEIGHBORS: 涉及(0.327), 已(0.323), 也(0.309), ，(0.290), 早日(0.288), 爱好者(0.284), 约旦河(0.283), 金(0.278), 工商局(0.270), 驻军(0.269)
+--------------------
+WORD: 会议
+NEIGHBORS: 揭晓(0.327), 增幅(0.325), 住房(0.306), 艺术家(0.284), 市长(0.284), 处长(0.281), 团拜会(0.280), 女士(0.280), 协定(0.276), 思路(0.276)
+--------------------
+WORD: 文明
+NEIGHBORS: 舆论(0.369), 管理(0.332), 探测器(0.321), 网(0.304), 一生(0.285), 又(0.285), 客车(0.283), ２０时(0.280), 增值(0.276), 老人(0.275)
+--------------------
+WORD: 本
+NEIGHBORS: 离退休(0.351), 有关(0.350), 罗(0.332), 党政(0.305), 花园(0.305), 造船(0.300), 吕梁(0.300), 检验(0.286), 安置(0.285), 充满(0.283)
+--------------------
+WORD: 怎么
+NEIGHBORS: 读(0.353), 下半年(0.352), 敢(0.319), 临近(0.310), 比较(0.309), 村民(0.308), 调节(0.305), 表面(0.298), 连连(0.295), 作家(0.278)
+--------------------
+=== EN Results ===
+WORD: asian
+NEIGHBORS: suzhou(0.333), central(0.333), municipal(0.317), african(0.311), marketing(0.305), toy(0.302), healthcare(0.291), span(0.284), practices(0.283), fewer(0.282)
+--------------------
+WORD: support
+NEIGHBORS: facilitate(0.366), emphasizing(0.348), responsible(0.337), teach(0.330), standard(0.330), sports(0.317), deliver(0.306), demonstrated(0.300), thailand(0.288), plans(0.287)
+--------------------
+WORD: previous
+NEIGHBORS: five(0.343), significantly(0.339), chip(0.332), percent(0.332), human(0.327), brussels(0.317), feature(0.310), immediate(0.310), patent(0.298), proud(0.298)
+--------------------
+WORD: research
+NEIGHBORS: robotics(0.349), india(0.322), academy(0.306), nezha(0.299), information(0.292), atlantic(0.290), autonomous(0.289), fundamental(0.281), author(0.277), concert(0.274)
+--------------------
+WORD: 28
+NEIGHBORS: cup(0.348), every(0.344), headquarters(0.334), 21(0.325), cheng(0.302), artifacts(0.300), unilateral(0.294), press(0.291), 23(0.290), 34(0.287)
+--------------------
+WORD: information
+NEIGHBORS: tea(0.331), nurture(0.331), fraud(0.319), joint(0.312), 32(0.309), remarks(0.308), chip(0.297), research(0.292), oil(0.291), 85(0.281)
+--------------------
+WORD: years
+NEIGHBORS: mean(0.368), porcelain(0.362), although(0.335), decade(0.311), xinjiang(0.310), contributes(0.299), height(0.295), guangdong(0.293), benefited(0.291), committee(0.287)
+--------------------
+WORD: though
+NEIGHBORS: settle(0.338), alongside(0.321), heard(0.314), accused(0.305), railway(0.296), decarbonization(0.290), told(0.283), ball(0.278), replace(0.278), continent(0.272)
+--------------------
+WORD: tea
+NEIGHBORS: fish(0.396), information(0.331), 2000(0.329), modern(0.312), computer(0.310), numerous(0.308), 19(0.303), chinese(0.303), wine(0.298), consultations(0.298)
+--------------------
+WORD: double
+NEIGHBORS: accepted(0.372), improve(0.306), exceeding(0.304), deliver(0.300), january(0.296), coal(0.293), attend(0.292), c(0.284), evolved(0.278), maximum(0.275)
+--------------------
+WORD: ecosystem
+NEIGHBORS: baby(0.303), seem(0.299), partner(0.292), courses(0.292), markets(0.273), soup(0.272), tons(0.271), strides(0.271), laboratory(0.270), meals(0.270)
+--------------------
+WORD: anniversary
+NEIGHBORS: part(0.351), freight(0.335), undergone(0.319), half(0.310), regardless(0.308), factories(0.303), middle(0.297), carry(0.297), 61(0.295), sidelines(0.294)
+--------------------
+WORD: surge
+NEIGHBORS: loans(0.358), specializing(0.347), participated(0.338), shows(0.328), placed(0.327), deaths(0.322), reflected(0.318), engaging(0.311), turbulence(0.310), realities(0.301)
+--------------------
+WORD: time
+NEIGHBORS: seeds(0.410), fill(0.347), war(0.336), avoiding(0.321), consecutive(0.315), 66(0.311), begun(0.310), achievements(0.307), champion(0.304), second(0.302)
+--------------------
+WORD: night
+NEIGHBORS: republican(0.351), leveraged(0.317), while(0.314), milestone(0.305), positive(0.302), calligraphy(0.295), shipments(0.291), hospitals(0.279), tan(0.279), roughly(0.269)
+--------------------
+WORD: infrastructure
+NEIGHBORS: class(0.390), reaffirmed(0.341), crises(0.318), world(0.314), flights(0.308), opinions(0.304), organizations(0.299), nepal(0.298), ethiopia(0.297), whether(0.293)
+--------------------
+WORD: brands
+NEIGHBORS: employees(0.371), movie(0.316), everywhere(0.316), relationships(0.316), technique(0.314), notable(0.314), 2028(0.311), layout(0.310), stations(0.308), collaboration(0.308)
+--------------------
+WORD: before
+NEIGHBORS: met(0.392), pandemic(0.368), another(0.338), doctor(0.335), prioritizes(0.326), has(0.309), shop(0.308), portuguese(0.304), shan(0.295), institution(0.290)
+--------------------
+WORD: our
+NEIGHBORS: eco(0.374), false(0.338), rich(0.331), exotic(0.324), dark(0.323), blood(0.320), constructive(0.304), s(0.299), renewed(0.299), the(0.284)
+--------------------
+WORD: various
+NEIGHBORS: artistic(0.329), employed(0.312), xiamen(0.299), enterprise(0.298), leader(0.288), bottlenecks(0.287), cantonese(0.287), million(0.285), related(0.285), code(0.282)
+--------------------
