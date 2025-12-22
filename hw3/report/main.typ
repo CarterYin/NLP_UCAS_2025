@@ -210,7 +210,7 @@ import json
 from openai import OpenAI
 
 # 配置 API Key 和 Base URL
-API_KEY = os.getenv("LLM_API_KEY", "sk-walldtjcnajmxkczdaubsgmcsnxgemcuxomfuhaqioymntat")
+API_KEY = os.getenv("LLM_API_KEY", "your_api_key_here")
 BASE_URL = os.getenv("LLM_BASE_URL", "https://api.siliconflow.cn/v1")
 MODEL_NAME = os.getenv("LLM_MODEL", "Qwen/Qwen2.5-7B-Instruct")
 
