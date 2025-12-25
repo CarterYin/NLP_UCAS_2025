@@ -11,6 +11,7 @@ def main():
     models = [
         "Qwen/Qwen2.5-7B-Instruct",
         "Qwen/Qwen2.5-14B-Instruct", 
+        "Qwen/Qwen2.5-32B-Instruct",
         "Qwen/Qwen2.5-72B-Instruct",
     ]
     
